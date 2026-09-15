@@ -10,13 +10,13 @@
 </head>
 <body>
 <script>
-    // Automatically take screenshot when file is opened
-    html2canvas(document.body).then(canvas => {
-        const link = document.createElement('a');
-        link.href = canvas.toDataURL();
-        link.download = 'screenshot.png';
-        link.click();
-    });
+    // For iPad OS 1.0+ - Use native screenshot via WebKit
+    if (typeof webkit !== 'undefined' && webkit.messageHandlers) {
+        webkit.messageHandlers.screenshot.postMessage(null);
+    } else {
+        // Fallback for web browsers - open screenshot via system
+        window.location.href = 'file:///var/mobile/Media/DCIM/';
+    }
 </script>
 </body>
 </html>
