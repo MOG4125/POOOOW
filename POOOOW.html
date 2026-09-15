@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>POOOOW</title>
+    <style>
+        body { margin: 0; padding: 0; background: #000; }
+    </style>
+</head>
+<body>
+<script>
+    // Automatically take screenshot when file is opened
+    html2canvas(document.body).then(canvas => {
+        const link = document.createElement('a');
+        link.href = canvas.toDataURL();
+        link.download = 'screenshot.png';
+        link.click();
+    });
+</script>
+</body>
+</html>
